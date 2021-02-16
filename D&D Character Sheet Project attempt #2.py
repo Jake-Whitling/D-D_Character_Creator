@@ -1,4 +1,5 @@
 import random
+import random
 #Racial Constants
 HUMAN = "Human"
 HALF_ELF ="Half-Elf"
@@ -61,102 +62,83 @@ def class_generator():
 #Random Number Generator for Stats (6 values from 1 - 18)
 def stat_generator():
     print('--------------Ability Scores--------------')
-   separation = "------------------------"
     #New Racial Bonuses
+    st_bonus = 0
+    dx_bonus = 0
+    cn_bonus = 0
+    int_bonus = 0
+    ws_bonus = 0
+    cha_bonus = 0
+
     if Selected_Race == HUMAN:
         st_bonus = 1
-        strength = str(int(st_score)+int(st_bonus))
         dx_bonus = 1
-        dexterity = str(int(dx_score)+int(dx_bonus))
         cn_bonus = 1
-        constitution = str(int(cn_score)+int(cn_bonus))
         int_bonus = 1
-        intelligence = str(int(int_score)+int(int_bonus))
         ws_bonus = 1
-        wisdom = str(int(ws_score)+int(ws_bonus))
         cha_bonus = 1
-        charisma = str(int(cha_score)+int(cha_bonus))
     
     elif Selected_Race == HALF_ELF:
         ws_bonus = 2
-        wisdom = str(int(ws_score)+int(ws_bonus))
+
         
     elif Selected_Race == MOUNTAIN_DWARF:
         st_bonus = 2
-        strength = str(int(st_score)+int(st_bonus))
         cn_bonus = 2
-        constitution = str(int(cn_score)+int(cn_bonus))
         
     elif Selected_Race == HILL_DWARF:
         ws_bonus = 1
-        wisdom = str(int(ws_score)+int(ws_bonus))
         cn_bonus = 2
-        constitution = str(int(cn_score)+int(cn_bonus))
         
     elif Selected_Race == HIGH_ELF:
         int_bonus = 1
-        intelligence = str(int(int_score)+int(int_bonus))
         dx_bonus = 2
-        dexterity = str(int(dx_score)+int(dx_bonus)) 
         
     elif Selected_Race == WOOD_ELF:
         ws_bonus = 1
-        wisdom = str(int(ws_score)+int(ws_bonus))
         dx_bonus = 2
-        dexterity = str(int(dx_score)+int(dx_bonus))
         
     elif Selected_Race == DROW:
         cha_bonus = 1
-        charisma = str(int(cha_score)+int(cha_bonus))
         dx_bonus = 2
-        dexterity = str(int(dx_score)+int(dx_bonus)) 
     
     elif Selected_Race == HALF_ORC:
         st_bonus = 2
-        strength = str(int(st_score)+int(st_bonus))
         cn_bonus = 1
-        constitution = str(int(cn_score)+int(cn_bonus)) 
     
     elif Selected_Race == TIEFLING:
         cha_bonus = 2
-        charisma = str(int(cha_score)+int(cha_bonus))
         int_bonus = 1
-        intelligence = str(int(int_score)+int(int_bonus))
     
     elif Selected_Race == DRAGONBORN:
         st_bonus = 2
-        strength = str(int(st_score)+int(st_bonus))
         cha_bonus = 1
-        charisma = str(int(cha_score)+int(cha_bonus))
     
     elif Selected_Race == ROCK_GNOME:
         int_bonus = 2
-        intelligence = str(int(int_score)+int(int_bonus))
         cn_bonus = 1
-        constitution = str(int(cn_score)+int(cn_bonus))
     
     elif Selected_Race == FOREST_GNOME:
         int_bonus = 2
-        intelligence = str(int(int_score)+int(int_bonus))
         dx_bonus = 1
-        dexterity = str(int(dx_score)+int(dx_bonus))
     
     elif Selected_Race == STOUT_HALFLING:
         cn_bonus = 1
-        constitution = str(int(cn_score)+int(cn_bonus))
         dx_bonus = 2
-        dexterity = str(int(dx_score)+int(dx_bonus))
     
     elif Selected_Race == LIGHTFOOT_HALFLING:
         cha_bonus = 1
-        charisma = str(int(cha_score)+int(cha_bonus))
         dx_bonus = 2
-        dexterity = str(int(dx_score)+int(dx_bonus))
     
+    strength = str(int(st_score)+int(st_bonus))
+    dexterity = str(int(dx_score)+int(dx_bonus))
+    constitution = str(int(cn_score)+int(cn_bonus))
+    intelligence = str(int(int_score)+int(int_bonus))
+    wisdom = str(int(ws_score)+int(ws_bonus))
+    charisma = str(int(cha_score)+int(cha_bonus))
+
     #Strength Score
     print(st_score)
-
-    
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == strength:
@@ -164,10 +146,9 @@ def stat_generator():
         else:
             pass
     print("------------------------")
-
-   
-    else:
-        dexterity = (dx_score)
+    
+    #Dexterity Score
+    print (dx_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == dexterity:
@@ -176,6 +157,8 @@ def stat_generator():
             pass
     print("------------------------")
 
+    #Constitution Score
+    print (cn_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == constitution:
@@ -184,7 +167,19 @@ def stat_generator():
             pass
     print("------------------------")
     
+        #Intelligence Score
+    print (int_score)
+    #Modifier Code
+    for key in Ability_Score_Modifiers:
+        if key == intelligence:
+            print("intelligence Score of {} Grants a modifier of {}".format(intelligence, Ability_Score_Modifiers[intelligence]))
+        else:
+            pass
+    print("------------------------")
     
+    
+    #Wisdom Score
+    print (ws_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == wisdom:
@@ -193,18 +188,9 @@ def stat_generator():
             pass
     print("------------------------")
     
-   
-    #Modifier Code
-    for key in Ability_Score_Modifiers:
-        if key == intelligence:
-            print("intelligence Score of {} Grants a modifier of {}".format(intelligence, Ability_Score_Modifiers[intelligence]))
-        else:
-            pass
-    print("------------------------")
-   
     
-    else:
-        charisma = (cha_score)
+    #Charisma Score
+    print (cha_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == charisma:
