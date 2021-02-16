@@ -1,5 +1,4 @@
 import random
-import random
 #Racial Constants
 HUMAN = "Human"
 HALF_ELF ="Half-Elf"
