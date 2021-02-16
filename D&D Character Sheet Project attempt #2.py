@@ -1,16 +1,42 @@
 import random
-#Global Values
-Race_Choices = ['Human', 'Half-Elf', 'Mountain Dwarf', 'Hill Dwarf', 'High Elf', 'Wood Elf', 'Drow', 'Half-Orc', 'Tiefling', 'Dragonborn', 'Rock Gnome', 'Forest Gnome', 'Stout Halfling', 'Lightfoot Halfling']
-Class_Choices = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard']
+#Racial Constants
+HUMAN = "Human"
+HALF_ELF ="Half-Elf"
+MOUNTAIN_DWARF = "Mountain Dwarf"
+HILL_DWARF = "Hill Dwarf"
+HIGH_ELF = "High_Elf"
+WOOD_ELF = "Wood Elf"
+DROW = "Drow"
+HALF_ORC = "Half-Orc"
+TIEFLING = "Tiefling"
+DRAGONBORN = "Dragonborn"
+ROCK_GNOME = "Rock Gnome"
+FOREST_GNOME = "Forest Gnome"
+STOUT_HALFLING = "Stout Halfling"
+LIGHTFOOT_HALFLING = "Lightfoot Halfling"
 
-Selected_Races = random.choice(Race_Choices)
-Selected_Classes = random.choice(Class_Choices)
+BARBARIAN = "Barabrian"
+BARD = "Bard"
+CLERIC = "Cleric"
+DRUID = "Druid"
+FIGHTER = "Fighter"
+MONK = "Monk"
+PALADIN = "Paladin"
+RANGER = "Ranger"
+ROGUE = "Rogue"
+SORCERER = "Sorcerer"
+WARLOCK = "Warlock"
+WIZARD = "Wizard"
+
+Race_Choices = [HUMAN, HALF_ELF, MOUNTAIN_DWARF, HILL_DWARF, HIGH_ELF, WOOD_ELF, DROW, HALF_ORC, TIEFLING, DRAGONBORN, ROCK_GNOME, FOREST_GNOME, STOUT_HALFLING, LIGHTFOOT_HALFLING]
+Class_Choices = [BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD]
+
 
 st_score = str(random.randint(3,18))
 dx_score = str(random.randint(3,18))
 cn_score = str(random.randint(3,18))
-ws_score = str(random.randint(3,18))
 int_score = str(random.randint(3,18))
+ws_score = str(random.randint(3,18))
 cha_score = str(random.randint(3,18))
 
 #skill_score = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
@@ -21,37 +47,97 @@ Ability_Score_Modifiers = {'1' : '-5', '2' : '-4', '3' : '-4', '4' : '-3', '5' :
 # Print Prompt to Enter First Name and Last Name
 firstname=input('Please choose a First Name : ')
 lastname=input('Please choose a Last Name : ')
-
+Selected_Race=input('Please choose your Race : ')
+Selected_Class=input('Please choose your Class : ')
 print(firstname, lastname)
 #Print Selected Race from List
 def race_generator():
-    print(Selected_Races)
+    print(Selected_Race)
 
 #Print Selected Class from List
 def class_generator():
-    print(Selected_Classes)
+    print(Selected_Class)
 
 #Random Number Generator for Stats (6 values from 1 - 18)
 def stat_generator():
     print('--------------Ability Scores--------------')
+    #New Racial Bonuses
+    st_bonus = 0
+    dx_bonus = 0
+    cn_bonus = 0
+    int_bonus = 0
+    ws_bonus = 0
+    cha_bonus = 0
+
+    if Selected_Race == HUMAN:
+        st_bonus = 1
+        dx_bonus = 1
+        cn_bonus = 1
+        int_bonus = 1
+        ws_bonus = 1
+        cha_bonus = 1
+    
+    elif Selected_Race == HALF_ELF:
+        ws_bonus = 2
+
+        
+    elif Selected_Race == MOUNTAIN_DWARF:
+        st_bonus = 2
+        cn_bonus = 2
+        
+    elif Selected_Race == HILL_DWARF:
+        ws_bonus = 1
+        cn_bonus = 2
+        
+    elif Selected_Race == HIGH_ELF:
+        int_bonus = 1
+        dx_bonus = 2
+        
+    elif Selected_Race == WOOD_ELF:
+        ws_bonus = 1
+        dx_bonus = 2
+        
+    elif Selected_Race == DROW:
+        cha_bonus = 1
+        dx_bonus = 2
+    
+    elif Selected_Race == HALF_ORC:
+        st_bonus = 2
+        cn_bonus = 1
+    
+    elif Selected_Race == TIEFLING:
+        cha_bonus = 2
+        int_bonus = 1
+    
+    elif Selected_Race == DRAGONBORN:
+        st_bonus = 2
+        cha_bonus = 1
+    
+    elif Selected_Race == ROCK_GNOME:
+        int_bonus = 2
+        cn_bonus = 1
+    
+    elif Selected_Race == FOREST_GNOME:
+        int_bonus = 2
+        dx_bonus = 1
+    
+    elif Selected_Race == STOUT_HALFLING:
+        cn_bonus = 1
+        dx_bonus = 2
+    
+    elif Selected_Race == LIGHTFOOT_HALFLING:
+        cha_bonus = 1
+        dx_bonus = 2
+    
+    strength = str(int(st_score)+int(st_bonus))
+    dexterity = str(int(dx_score)+int(dx_bonus))
+    constitution = str(int(cn_score)+int(cn_bonus))
+    intelligence = str(int(int_score)+int(int_bonus))
+    wisdom = str(int(ws_score)+int(ws_bonus))
+    charisma = str(int(cha_score)+int(cha_bonus))
+
     #Strength Score
     print(st_score)
-
-    #Racial Bonuses
-    if Selected_Races == 'Human':
-        st_bonus = str(1)
-        strength = str(int(st_score)+int(st_bonus))
-    elif Selected_Races == 'Mountain Dwarf' :
-        st_bonus = str(2)
-        strength = str(int(st_score)+int(st_bonus))
-    elif Selected_Races == 'Dragonborn' :
-        st_bonus = str(2)
-        strength = str(int(st_score)+int(st_bonus))
-    elif Selected_Races == 'Half-Orc' :
-        st_bonus = str(2)
-        strength = str(int(st_score)+int(st_bonus))
-    else:
-        strength = (st_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == strength:
@@ -59,33 +145,9 @@ def stat_generator():
         else:
             pass
     print("------------------------")
-
+    
     #Dexterity Score
-    print(dx_score)
-    #RaceBonuses
-    if Selected_Races == 'Human':
-        dx_bonus = str(1)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'High Elf' :
-        dx_bonus = str(2)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'Wood Elf' :
-        dx_bonus = str(2)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'Drow' :
-        dx_bonus = str(2)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'Forest Gnome' :
-        dx_bonus = str(1)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'Stout Halfling' :
-        dx_bonus = str(2)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    elif Selected_Races == 'Lightfoot Halfling' :
-        dx_bonus = str(2)
-        dexterity = str(int(dx_score)+int(dx_bonus))
-    else:
-        dexterity = (dx_score)
+    print (dx_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == dexterity:
@@ -95,28 +157,7 @@ def stat_generator():
     print("------------------------")
 
     #Constitution Score
-    print(cn_score)
-    #RaceBonuses
-    if Selected_Races == 'Human':
-        cn_bonus = str(1)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    elif Selected_Races == 'Hill Dwarf' :
-        cn_bonus = str(2)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    elif Selected_Races == 'Mountain Dwarf' :
-        cn_bonus = str(2)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    elif Selected_Races == 'Half-Orc' :
-        cn_bonus = str(1)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    elif Selected_Races == 'Stout Halfling' :
-        cn_bonus = str(1)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    elif Selected_Races == 'Rock Gnome' :
-        cn_bonus = str(1)
-        constitution = str(int(cn_score)+int(cn_bonus))
-    else:
-        constitution = (cn_score)
+    print (cn_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == constitution:
@@ -125,20 +166,19 @@ def stat_generator():
             pass
     print("------------------------")
     
+        #Intelligence Score
+    print (int_score)
+    #Modifier Code
+    for key in Ability_Score_Modifiers:
+        if key == intelligence:
+            print("intelligence Score of {} Grants a modifier of {}".format(intelligence, Ability_Score_Modifiers[intelligence]))
+        else:
+            pass
+    print("------------------------")
+    
+    
     #Wisdom Score
-    print(ws_score)
-    #RaceBonuses
-    if Selected_Races == 'Human':
-        ws_bonus = str(1)
-        wisdom = str(int(ws_score)+int(ws_bonus))
-    elif Selected_Races == 'Hill Dwarf' :
-        ws_bonus = str(2)
-        wisdom = str(int(ws_score)+int(ws_bonus))
-    elif Selected_Races == 'Wood Elf' :
-        ws_bonus = str(2)
-        wisdom = str(int(ws_score)+int(ws_bonus))
-    else:
-        wisdom = (ws_score)
+    print (ws_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == wisdom:
@@ -147,57 +187,9 @@ def stat_generator():
             pass
     print("------------------------")
     
-    #Intelligence Score
-    print(int_score)
-    #RaceBonuses
-    if Selected_Races == 'Human':
-        int_bonus = str(1)
-        intelligence = str(int(int_score)+int(int_bonus))
-    elif Selected_Races == 'Rock Gnome' :
-        int_bonus = str(2)
-        intelligence = str(int(int_score)+int(int_bonus))
-    elif Selected_Races == 'Forrest Gnome' :
-        int_bonus = str(2)
-        intelligence = str(int(int_score)+int(int_bonus))
-    elif Selected_Races == 'High Elf' :
-        int_bonus = str(1)
-        intelligence = str(int(int_score)+int(int_bonus))
-    elif Selected_Races == 'Tiefling' :
-        int_bonus = str(1)
-        intelligence = str(int(int_score)+int(int_bonus))
-    else:
-        intelligence = (int_score)
-    #Modifier Code
-    for key in Ability_Score_Modifiers:
-        if key == intelligence:
-            print("intelligence Score of {} Grants a modifier of {}".format(intelligence, Ability_Score_Modifiers[intelligence]))
-        else:
-            pass
-    print("------------------------")
-   
+    
     #Charisma Score
-    print(cha_score)
-    #RaceBonuses
-    if Selected_Races == 'Human':
-        cha_bonus = str(1)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    elif Selected_Races == 'Half-Elf' :
-        cha_bonus = str(2)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    elif Selected_Races == 'Drow' :
-        cha_bonus = str(1)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    elif Selected_Races == 'Dragonborn' :
-        cha_bonus = str(1)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    elif Selected_Races == 'Lightfoot Halfling' :
-        cha_bonus = str(1)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    elif Selected_Races == 'Tielfing' :
-        cha_bonus = str(2)
-        charisma = str(int(cha_score)+int(cha_bonus))
-    else:
-        charisma = (cha_score)
+    print (cha_score)
     #Modifier Code
     for key in Ability_Score_Modifiers:
         if key == charisma:
